@@ -40,3 +40,6 @@ Usage: terraform [-version] [-help] <command> [args]
 
 ## Використання Terraform
 
+1. terraform init
+2. terraform apply -target=module.eu-west-2
+3. terraform destory
