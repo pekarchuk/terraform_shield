@@ -6,9 +6,36 @@ provider "aws" {
   region = var.region
 }
 
+data "aws_ami" "uashield" {
+  count       = var.uashield_ami != "" ? 0 : 1
+  most_recent = true
+  owners      = [var.uashield_ami_owner]
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  filter {
+    name   = "image-type"
+    values = ["machine"]
+  }
+
+  filter {
+    name   = "architecture"
+    values = ["x86_64"]
+  }
+
+  filter {
+    name   = "name"
+    values = ["uashield*"]
+  }
+}
+
+
 resource "aws_instance" "server" {
   count           = var.instance_count
-  ami             = var.ami
+  ami             = var.uashield_ami != "" ? var.uashield_ami : data.aws_ami.uashield[0].image_id
   instance_type   = var.instance_type
   key_name        = "connectiontest"
   security_groups = [aws_security_group.uashield_sg.name]
