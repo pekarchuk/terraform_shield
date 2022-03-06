@@ -40,6 +40,33 @@ Usage: terraform [-version] [-help] <command> [args]
 
 ## Використання Terraform
 
-1. terraform init
-2. terraform apply -target=module.eu-west-2
-3. terraform destory
+Налаштування
+
+```shell
+$ make setup
+```
+
+Запуск контейнерів
+```shell
+$ make deploy
+```
+
+Ця команда запустить по 3 інстанса в кожному доступному регіоні.
+Є можливість вказати конкретний регіон:
+```shell
+$ make deploy target=sa-east-1
+```
+
+Список доступних регіонів:
+
+* ap-south-1
+* eu-west-3
+* eu-west-2
+* eu-west-1
+* sa-east-1
+* ca-central-1
+* ap-southeast-1
+* ap-southeast-2
+* eu-central-1
+* us-west-1
+

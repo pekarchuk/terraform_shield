@@ -4,7 +4,7 @@ setup:
 
 .PHONY: deploy
 deploy:
-	bash scripts/deploy.sh
+	bash scripts/deploy.sh ${target}
 
 .PHONY: plan
 plan:
