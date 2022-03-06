@@ -10,7 +10,6 @@ resource "aws_instance" "server" {
   count           = var.instance_count
   ami             = var.ami
   instance_type   = var.instance_type
-  key_name        = "connectiontest"
   security_groups = [aws_security_group.uashield_sg.name]
 
   tags = {
