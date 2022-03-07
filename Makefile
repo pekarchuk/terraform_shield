@@ -1,15 +1,15 @@
-.PHONY: setup
-setup:
+.PHONY: aws-setup
+aws-setup:
 	bash scripts/setup.sh
 
 .PHONY: deploy
-deploy:
-	bash scripts/deploy.sh ${target}
+aws-deploy:
+	bash scripts/deploy.sh --target=${target} --instance_count=${instance_count}
 
 .PHONY: plan
-plan:
+aws-plan:
 	bash scripts/plan.sh
 
 .PHONY: destroy
-destroy:
+aws-destroy:
 	bash scripts/destroy.sh
